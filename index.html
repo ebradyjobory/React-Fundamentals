@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+  <head>
+    <script src="http://fb.me/react-0.12.2.js"></script>
+    <script src="http://fb.me/JSXTransformer-0.12.2.js"></script>
+  </head>
+  <body>
+    <script type="text/jsx">
+      /*** @jsx React.DOM */
+      var App = React.createClass({
+        render: function() {
+          return (
+            <div>
+              <h1>{this.props.txt}</h1>
+              <h1>Hello, World, again!</h1>
+            </div>
+          )
+        }
+      });
+      React.render(<App txt = "hello my name is Essam"/>, document.body)
+    </script>
+  
+
+  </body>
+</html>
