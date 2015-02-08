@@ -8,16 +8,46 @@
     <script type="text/jsx">
       /*** @jsx React.DOM */
       var App = React.createClass({
+        getInitialState: function(){
+          return {
+            red:0,
+            green:0,
+            blue:0
+          }
+
+        },
+        update: function() {
+          this.setState({ 
+            red: this.refs.red.refs.range.getDOMNode().value,
+            green: this.refs.green.refs.range.getDOMNode().value,
+            blue: this.refs.blue.refs.range.getDOMNode().value
+           })
+        },
         render: function() {
           return (
             <div>
-              <h1>{this.props.txt}</h1>
-              <h1>Hello, World, again!</h1>
+              <Wiget ref="red" update={ this.update } />
+              <h1>{ this.state.red }</h1>
+              <Wiget ref="green" update={ this.update } />
+              <h1>{ this.state.green }</h1>
+              <Wiget ref="blue" update={ this.update } />
+              <h1>{ this.state.blue }</h1>
             </div>
           )
         }
       });
-      React.render(<App txt = "hello my name is Essam"/>, document.body)
+      var Wiget = React.createClass({
+        render: function() {
+          return(
+     
+              <input ref="range" type="range" min="0" max="100" onChange={this.props.update} />
+          
+            )
+        }
+
+      })
+
+      React.render(<App />, document.body)
     </script>
   
 
